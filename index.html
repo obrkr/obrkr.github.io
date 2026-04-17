@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>#! crunchbang test</title>
+<!-- TEMPLATE: page title -->
+<title>#! your-handle</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
 :root {
@@ -16,15 +17,13 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;cursor:default;user-select:none}
-
-/* desktop */
 #desk{position:fixed;inset:0;background:#1a1a1a;overflow:hidden}
 #desk::before{content:'';position:absolute;inset:0;
   background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
   background-size:40px 40px;pointer-events:none}
+/* TEMPLATE: change '#!' to whatever watermark text you want */
 #desk::after{content:'#!';position:absolute;right:300px;top:50%;transform:translateY(-50%);
   font-size:300px;font-weight:700;color:rgba(255,255,255,.022);pointer-events:none;line-height:1;letter-spacing:-20px}
-
 /* conky */
 #conky{position:fixed;top:20px;right:14px;width:230px;color:var(--dim);font-size:11px;line-height:1.85;pointer-events:none;z-index:5}
 .ch2{font-size:40px;font-weight:700;color:rgba(212,168,67,.18);line-height:1;letter-spacing:-3px;margin-bottom:6px}
@@ -34,7 +33,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
 .cb{width:100%;height:3px;background:var(--border);margin:3px 0;border-radius:1px}
 .cbf{height:100%;background:var(--gold);border-radius:1px;transition:width 2s}
 .cbf.g{background:var(--green)}.cbf.b{background:var(--blue)}
-
 /* windows */
 .win{position:absolute;min-width:260px;min-height:140px;background:var(--bg2);border:1px solid #3d3d3d;
   box-shadow:0 6px 40px rgba(0,0,0,.75);display:flex;flex-direction:column;z-index:10;border-radius:3px;overflow:hidden}
@@ -50,26 +48,22 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(
   display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(0,0,0,.7);opacity:.65;transition:opacity .1s}
 .wbtn:hover{opacity:1}
 .wbtn.rc{background:#cc6666}.wbtn.rn{background:#d4a843}.wbtn.rx{background:#7aaa6e}
-
 /* tabs */
 .tabs{display:flex;background:var(--bg3);border-bottom:1px solid var(--border);flex-shrink:0}
 .tab{padding:5px 14px;font-size:11px;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
 .tab:hover{color:var(--text)}
 .tab.on{color:var(--gold);border-bottom-color:var(--gold)}
 .pane{display:none}.pane.on{display:block}
-
 /* body */
 .wb{flex:1;overflow:auto;padding:12px;font-size:12px;line-height:1.65}
 .wb::-webkit-scrollbar{width:5px}
 .wb::-webkit-scrollbar-track{background:var(--bg3)}
 .wb::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-
 /* terminal */
 .term{background:var(--bg);border:1px solid var(--border);border-radius:2px;padding:10px 12px;font-size:11px;line-height:1.75}
 .tp2{color:var(--gold)}.tpa{color:var(--blue)}.tcm{color:var(--white)}.tdm{color:var(--dim)}.tgr{color:var(--green)}.trd{color:var(--red)}
 .cur{display:inline-block;width:7px;height:13px;background:var(--gold);opacity:.8;animation:bl 1.1s step-end infinite;vertical-align:text-bottom}
 @keyframes bl{50%{opacity:0}}
-
 /* misc */
 .sec2{color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;margin:12px 0 6px;padding-bottom:3px;border-bottom:1px solid var(--border)}
 .sec2:first-child{margin-top:0}
@@ -91,7 +85,6 @@ a:hover{color:#7ecece;text-decoration:underline}
 .rh{position:absolute;right:0;bottom:0;width:12px;height:12px;cursor:se-resize}
 .rh::before{content:'';position:absolute;right:2px;bottom:2px;width:6px;height:6px;border-right:2px solid #555;border-bottom:2px solid #555}
 .note{color:var(--dim);font-size:10px;margin-top:6px}
-
 /* music */
 .pscr{background:#0d0d0d;border:1px solid var(--border);border-radius:2px;padding:10px;margin-bottom:10px}
 .ptr{color:var(--white);font-size:12px;margin-bottom:2px}
@@ -103,7 +96,19 @@ a:hover{color:#7ecece;text-decoration:underline}
 .pb:hover{background:var(--border2);color:var(--white)}
 .pb.pp{border-color:var(--gold);color:var(--gold)}
 .pb.pp:hover{background:var(--gold);color:#000}
-
+/* desktop icons */
+#icons{position:fixed;top:16px;left:16px;display:flex;flex-direction:column;gap:6px;z-index:6}
+.dicon{width:68px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 4px;
+  border-radius:3px;cursor:pointer;border:1px solid transparent;transition:background .12s,border-color .12s}
+.dicon:hover{background:rgba(212,168,67,.08);border-color:rgba(212,168,67,.2)}
+.dicon.selected{background:rgba(212,168,67,.14);border-color:rgba(212,168,67,.35)}
+.dicon-img{width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  font-size:22px;background:var(--bg3);border:1px solid var(--border2);border-radius:4px;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);transition:box-shadow .12s}
+.dicon:hover .dicon-img{box-shadow:0 3px 14px rgba(212,168,67,.2)}
+.dicon-lbl{font-size:10px;color:var(--text);text-align:center;line-height:1.3;
+  text-shadow:0 1px 3px rgba(0,0,0,.9);word-break:break-all;max-width:66px}
+.dicon.selected .dicon-lbl{color:var(--gold)}
 /* context menu */
 #ctx{position:fixed;background:var(--bg2);border:1px solid #444;border-radius:2px;
   box-shadow:0 8px 28px rgba(0,0,0,.65);z-index:99999;min-width:190px;padding:3px 0;display:none;font-size:12px}
@@ -114,7 +119,6 @@ a:hover{color:#7ecece;text-decoration:underline}
 .ci:hover .ck{color:rgba(0,0,0,.5)}
 .csep{height:1px;background:var(--border);margin:3px 0}
 .chead{padding:4px 16px 2px;font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px}
-
 /* panel */
 #panel{position:fixed;bottom:0;left:0;right:0;height:26px;
   background:linear-gradient(180deg,#272727 0%,#202020 100%);
@@ -130,14 +134,43 @@ a:hover{color:#7ecece;text-decoration:underline}
 .wsd{width:8px;height:8px;border-radius:50%;background:var(--border2);cursor:pointer}
 .wsd.on{background:var(--gold)}
 .pclk{color:var(--text)}
-
+/* start menu */
+#startmenu{position:fixed;bottom:30px;left:0;width:300px;
+  background:linear-gradient(135deg,#242424 0%,#1e1e1e 100%);
+  border:1px solid #484848;border-bottom:none;
+  box-shadow:4px -4px 32px rgba(0,0,0,.8);z-index:99998;
+  display:none;flex-direction:column;border-radius:3px 3px 0 0;overflow:hidden;font-size:12px}
+#startmenu.on{display:flex}
+.sm-header{background:linear-gradient(90deg,#2a2a2a,#1e1e1e);
+  border-bottom:1px solid var(--border);padding:12px 14px;display:flex;align-items:center;gap:10px}
+.sm-avatar{width:36px;height:36px;border-radius:50%;background:var(--bg3);
+  border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.sm-user{font-size:13px;color:var(--white);font-weight:700;line-height:1.2}
+.sm-host{font-size:10px;color:var(--gold)}
+.sm-body{display:flex;flex:1}
+.sm-left{flex:1;border-right:1px solid var(--border);padding:6px 0}
+.sm-right{width:110px;padding:6px 0;background:rgba(0,0,0,.15)}
+.sm-section{font-size:9px;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;
+  padding:6px 14px 2px;opacity:.7}
+.sm-item{display:flex;align-items:center;gap:9px;padding:5px 14px;cursor:pointer;
+  color:var(--text);transition:background .1s,color .1s;white-space:nowrap}
+.sm-item:hover{background:var(--gold);color:#000}
+.sm-item:hover .sm-key{color:rgba(0,0,0,.5)}
+.sm-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0}
+.sm-key{margin-left:auto;font-size:10px;color:var(--dim)}
+.sm-sep{height:1px;background:var(--border);margin:4px 10px}
+.sm-footer{background:#191919;border-top:1px solid var(--border);
+  padding:5px 10px;display:flex;justify-content:flex-end;gap:6px}
+.sm-fbtn{padding:2px 10px;font-size:10px;color:var(--dim);cursor:pointer;
+  border:1px solid var(--border);border-radius:2px;font-family:var(--mono);background:var(--bg3)}
+.sm-fbtn:hover{color:var(--red);border-color:var(--red)}
+.sm-fbtn.reboot:hover{color:var(--gold);border-color:var(--gold)}
 /* notification */
 #notif{position:fixed;bottom:34px;right:12px;background:var(--bg2);border:1px solid var(--gold);
   border-radius:3px;padding:8px 14px;font-size:11px;color:var(--text);z-index:99997;
   opacity:0;transition:opacity .3s;pointer-events:none;max-width:260px}
 #notif.on{opacity:1}
 .ntitle{color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
-
 /* boot */
 #boot{position:fixed;inset:0;background:#000;z-index:999999;padding:20px 24px;font-family:var(--mono);font-size:12px;color:#888;overflow:hidden}
 #boot.gone{display:none}
@@ -150,38 +183,80 @@ a:hover{color:#7ecece;text-decoration:underline}
 <div id="boot"><div id="blines"></div></div>
 <div id="notif"><div class="ntitle" id="ntitle">system</div><div id="nmsg"></div></div>
 
-<!-- DESKTOP -->
+<!-- ============================================================
+     DESKTOP
+     ============================================================ -->
 <div id="desk" oncontextmenu="showCtx(event)">
+
+  <!-- CONKY — right-side system stats widget -->
+  <!-- DESKTOP ICONS -->
+  <div id="icons">
+    <div class="dicon" onclick="selectIcon(this);openWin('w-about')">
+      <div class="dicon-img">🖥️</div>
+      <div class="dicon-lbl">terminal</div>
+    </div>
+    <div class="dicon" onclick="selectIcon(this);openWin('w-philes')">
+      <div class="dicon-img">📁</div>
+      <div class="dicon-lbl">philes</div>
+    </div>
+    <div class="dicon" onclick="selectIcon(this);openWin('w-music')">
+      <div class="dicon-img">🎵</div>
+      <div class="dicon-lbl">moc</div>
+    </div>
+    <div class="dicon" onclick="selectIcon(this);openWin('w-links')">
+      <div class="dicon-img">🔗</div>
+      <div class="dicon-lbl">links.txt</div>
+    </div>
+    <div class="dicon" onclick="selectIcon(this);openWin('w-contact')">
+      <div class="dicon-img">✉️</div>
+      <div class="dicon-lbl">contact</div>
+    </div>
+  </div>
+
   <div id="conky">
     <div class="ch2">#!</div>
-    <span style="color:var(--white);font-size:12px;font-weight:500">user</span><span style="color:var(--dim)">@</span><span style="color:var(--gold);font-size:12px">crunchbang</span>
+    <!-- TEMPLATE: your handle and hostname -->
+    <span style="color:var(--white);font-size:12px;font-weight:500">your-handle</span><span style="color:var(--dim)">@</span><span style="color:var(--gold);font-size:12px">hostname</span>
     <div style="color:var(--dim);font-size:10px;margin-bottom:2px">~</div>
+
     <div class="ct">system</div>
     <div class="cr"><span>uptime</span><span class="cv" id="cu">0d 0h 0m</span></div>
-    <div class="cr"><span>kernel</span><span class="cv">3.2.0-4-amd64</span></div>
-    <div class="cr"><span>wm</span><span class="cv">openbox 3.5.2</span></div>
+    <!-- TEMPLATE: kernel version, WM -->
+    <div class="cr"><span>kernel</span><span class="cv">x.x.x-amd64</span></div>
+    <div class="cr"><span>wm</span><span class="cv">openbox x.x</span></div>
+
     <div class="ct">cpu</div>
     <div class="cr"><span>load</span><span class="cv" id="cc">--</span></div>
     <div class="cb"><div class="cbf" id="ccb" style="width:0%"></div></div>
     <div class="cr"><span>temp</span><span class="cv" id="ctemp">--</span></div>
+
     <div class="ct">memory</div>
     <div class="cr"><span>used</span><span class="cv" id="cm">--</span></div>
     <div class="cb"><div class="cbf g" id="cmb" style="width:0%"></div></div>
+
+    <!-- TEMPLATE: disk size -->
     <div class="ct">disk /</div>
-    <div class="cr"><span>used</span><span class="cv">14.2G / 60G</span></div>
-    <div class="cb"><div class="cbf b" style="width:24%"></div></div>
+    <div class="cr"><span>used</span><span class="cv">??G / ??G</span></div>
+    <div class="cb"><div class="cbf b" style="width:0%"></div></div>
+
     <div class="ct">network</div>
-    <div class="cr"><span>ip</span><span class="cv">192.168.1.x</span></div>
+    <div class="cr"><span>ip</span><span class="cv">192.168.x.x</span></div>
     <div class="cr"><span>down</span><span class="cv" id="cdl">0 KB/s</span></div>
     <div class="cr"><span>up</span><span class="cv" id="cul">0 KB/s</span></div>
+
     <div class="ct">now playing</div>
     <div class="cv" id="ctrack" style="font-size:10px;line-height:1.5;color:var(--text)">—</div>
   </div>
-</div>
 
-<!-- CONTEXT MENU -->
+</div><!-- end #desk -->
+
+
+<!-- ============================================================
+     CONTEXT MENU (right-click on desktop)
+     ============================================================ -->
 <div id="ctx">
-  <div class="chead">crunchbang linux</div>
+  <!-- TEMPLATE: menu header label -->
+  <div class="chead">your-os-name</div>
   <div class="ci" onclick="openWin('w-about');closeCtx()">terminal <span class="ck">urxvt</span></div>
   <div class="ci" onclick="openWin('w-philes');closeCtx()">file manager <span class="ck">thunar</span></div>
   <div class="ci" onclick="openWin('w-music');closeCtx()">music player <span class="ck">moc</span></div>
@@ -195,97 +270,121 @@ a:hover{color:#7ecece;text-decoration:underline}
   <div class="ci" onclick="closeCtx();doShutdown()">log out</div>
 </div>
 
-<!-- ABOUT WINDOW -->
+
+<!-- ============================================================
+     ABOUT WINDOW  (terminal / profile)
+     ============================================================ -->
 <div class="win hidden" id="w-about" style="left:80px;top:28px;width:560px;height:430px">
   <div class="wtb" onmousedown="doDrag(event,'w-about')">
-    <div class="wtitle">urxvt — user@crunchbang: ~</div>
+    <!-- TEMPLATE: titlebar text -->
+    <div class="wtitle">urxvt — your-handle@hostname: ~</div>
     <div class="wbtns">
       <div class="wbtn rn" onclick="minWin('w-about')"></div>
       <div class="wbtn rx"></div>
       <div class="wbtn rc" onclick="closeWin('w-about')"></div>
     </div>
   </div>
+
+  <!-- Add / remove tabs as needed; keep tab id and pane id in sync -->
   <div class="tabs">
     <div class="tab on" onclick="stab(this,'w-about','p')">profile</div>
     <div class="tab" onclick="stab(this,'w-about','s')">skills</div>
     <div class="tab" onclick="stab(this,'w-about','n')">neofetch</div>
     <div class="tab" onclick="stab(this,'w-about','f')">friends</div>
   </div>
+
   <div class="wb">
+
+    <!-- TAB: profile -->
     <div class="pane on" id="w-about-p">
       <div class="term">
-<span class="tp2">user@crunchbang</span><span class="tpa">:~$ </span><span class="tcm">cat about.txt</span><br><br>
-<span class="tgr">handle:</span>   user<br>
-<span class="tgr">status:</span>   online / lurking<br><br>
-mostly known for RE, exploit dev, security research.<br>
-things that probably should not work.<br><br>
-previously: enterprise, startup, misc chaos.<br>
-started with game hacks. went sideways from there.<br><br>
-runs an AS, owns boxes.<br>
-DJ when the terminal gets boring. eternally dg.<br><br>
-welcome to my small corner of the internet.<br><br>
-<span class="tp2">user@crunchbang</span><span class="tpa">:~$ </span><span class="cur"></span>
+        <!-- TEMPLATE: terminal prompt — change handle/hostname to match conky -->
+        <span class="tp2">your-handle@hostname</span><span class="tpa">:~$ </span><span class="tcm">cat about.txt</span><br><br>
+
+        <!-- TEMPLATE: bio fields — add/remove lines freely -->
+        <span class="tgr">handle:</span> your-handle<br>
+        <span class="tgr">status:</span> online / lurking<br><br>
+
+        <!-- TEMPLATE: freeform bio text -->
+        a line or two about who you are.<br>
+        what you're known for.<br><br>
+        previously: your background here.<br>
+        how you got started.<br><br>
+        <!-- TEMPLATE: fun/personal detail -->
+        a hobby or two. something memorable.<br><br>
+        welcome to my small corner of the internet.<br><br>
+
+        <span class="tp2">your-handle@hostname</span><span class="tpa">:~$ </span><span class="cur"></span>
       </div>
+
       <div class="sec2">links</div>
-      <div class="lr"><a href="https://github.com" target="_blank">github.com/yourhandle</a></div>
+      <!-- TEMPLATE: profile links — add/remove .lr divs as needed -->
+      <div class="lr"><a href="https://github.com/your-handle" target="_blank">github.com/your-handle</a></div>
       <div class="lr"><a href="#" onclick="openWin('w-philes');return false">philes / blog</a></div>
-      <div class="lr"><a href="#">soundcloud</a></div>
-      <div class="lr"><a href="#">last.fm</a></div>
-      <div class="lr"><a href="#">ident.txt</a></div>
+      <div class="lr"><a href="#">link-3</a></div>
+      <div class="lr"><a href="#">link-4</a></div>
       <div class="note">last updated: <span id="lu"></span></div>
     </div>
+
+    <!-- TAB: skills -->
     <div class="pane" id="w-about-s">
       <div class="sec2">languages</div>
       <div style="display:grid;gap:7px;font-size:11px">
-        <div>C / C++<div class="bar2"><div class="bf2" style="width:90%"></div></div></div>
-        <div>Python<div class="bar2"><div class="bf2" style="width:82%"></div></div></div>
-        <div>JavaScript<div class="bar2"><div class="bf2 b" style="width:70%"></div></div></div>
-        <div>x86 / ARM Assembly<div class="bar2"><div class="bf2 g" style="width:67%"></div></div></div>
-        <div>Rust<div class="bar2"><div class="bf2" style="width:50%"></div></div></div>
+        <!-- TEMPLATE: skill bars — name + width % (0–100) -->
+        <div>Language 1<div class="bar2"><div class="bf2" style="width:90%"></div></div></div>
+        <div>Language 2<div class="bar2"><div class="bf2" style="width:75%"></div></div></div>
+        <div>Language 3<div class="bar2"><div class="bf2 b" style="width:60%"></div></div></div>
+        <div>Language 4<div class="bar2"><div class="bf2 g" style="width:50%"></div></div></div>
       </div>
+
       <div class="sec2">areas</div>
       <div class="term" style="font-size:11px">
-<span class="tgr">-&gt;</span> Reverse Engineering<br>
-<span class="tgr">-&gt;</span> Exploit Development<br>
-<span class="tgr">-&gt;</span> Kernel and Hypervisor Internals<br>
-<span class="tgr">-&gt;</span> Network Security / ASN<br>
-<span class="tgr">-&gt;</span> FIDO2 / WebAuthn Attack Surface<br>
-<span class="tgr">-&gt;</span> Binary Analysis<br>
-<span class="tgr">-&gt;</span> Anti-cheat / Game Hacking
+        <!-- TEMPLATE: area bullets -->
+        <span class="tgr">-&gt;</span> Area of expertise 1<br>
+        <span class="tgr">-&gt;</span> Area of expertise 2<br>
+        <span class="tgr">-&gt;</span> Area of expertise 3<br>
+        <span class="tgr">-&gt;</span> Area of expertise 4<br>
       </div>
     </div>
+
+    <!-- TAB: neofetch -->
     <div class="pane" id="w-about-n">
       <div class="term" style="font-size:11px">
-<span class="tp2">user@crunchbang</span><span class="tpa">:~$ </span><span class="tcm">neofetch</span><br><br>
-<span class="tgr">       ##        </span>  <span style="color:var(--white)">user</span><span class="tdm">@</span><span style="color:var(--white)">crunchbang</span><br>
-<span class="tgr">      ####       </span>  <span class="tdm">-----------------------</span><br>
-<span class="tgr">     ######      </span>  <span style="color:var(--gold)">OS:</span>       CrunchBang 11 Waldorf<br>
-<span class="tgr">    ########     </span>  <span style="color:var(--gold)">Kernel:</span>   3.2.0-4-amd64<br>
-<span class="tgr">   #!########    </span>  <span style="color:var(--gold)">WM:</span>       Openbox 3.5.2<br>
-<span class="tgr">  ##########     </span>  <span style="color:var(--gold)">Theme:</span>    Zukitwo-Dark<br>
-<span class="tgr">   ########      </span>  <span style="color:var(--gold)">Terminal:</span> urxvt<br>
-<span class="tgr">    ######       </span>  <span style="color:var(--gold)">Shell:</span>    zsh 5.0.2<br>
-<span class="tgr">     ####        </span>  <span style="color:var(--gold)">CPU:</span>      Intel Core i7-3770<br>
-<span class="tgr">      ##         </span>  <span style="color:var(--gold)">RAM:</span>      <span id="nfram">calculating...</span><br><br>
-<span class="tp2">user@crunchbang</span><span class="tpa">:~$ </span><span class="cur"></span>
+        <span class="tp2">your-handle@hostname</span><span class="tpa">:~$ </span><span class="tcm">neofetch</span><br><br>
+        <!-- TEMPLATE: neofetch fields -->
+        <span class="tgr"> ##       </span> <span style="color:var(--white)">your-handle</span><span class="tdm">@</span><span style="color:var(--white)">hostname</span><br>
+        <span class="tgr"> ####     </span> <span class="tdm">-----------------------</span><br>
+        <span class="tgr"> ######   </span> <span style="color:var(--gold)">OS:</span> Your OS Name<br>
+        <span class="tgr"> ######## </span> <span style="color:var(--gold)">Kernel:</span> x.x.x-amd64<br>
+        <span class="tgr"> #!###### </span> <span style="color:var(--gold)">WM:</span> Openbox x.x<br>
+        <span class="tgr"> ######## </span> <span style="color:var(--gold)">Theme:</span> Your-Theme<br>
+        <span class="tgr"> ######   </span> <span style="color:var(--gold)">Terminal:</span> urxvt<br>
+        <span class="tgr"> ####     </span> <span style="color:var(--gold)">Shell:</span> zsh x.x<br>
+        <span class="tgr"> ##       </span> <span style="color:var(--gold)">CPU:</span> Your CPU<br>
+        <span class="tgr">          </span> <span style="color:var(--gold)">RAM:</span> <span id="nfram">calculating...</span><br><br>
+        <span class="tp2">your-handle@hostname</span><span class="tpa">:~$ </span><span class="cur"></span>
       </div>
     </div>
+
+    <!-- TAB: friends (88x31 buttons) -->
     <div class="pane" id="w-about-f">
       <div class="sec2">friends</div>
       <div style="display:flex;flex-wrap:wrap;gap:4px">
-        <div style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);cursor:pointer;border-radius:1px">nullpt.rs</div>
-        <div style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);cursor:pointer;border-radius:1px">ud2.rip</div>
-        <div style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);cursor:pointer;border-radius:1px">tcp.direct</div>
-        <div style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);cursor:pointer;border-radius:1px">friend.sh</div>
-        <div style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);cursor:pointer;border-radius:1px">void.cat</div>
-        <div style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);cursor:pointer;border-radius:1px">hax.lol</div>
+        <!-- TEMPLATE: friend buttons — copy/paste the div, change text & href -->
+        <a href="#" target="_blank" style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);border-radius:1px;text-decoration:none">friend-1.tld</a>
+        <a href="#" target="_blank" style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);border-radius:1px;text-decoration:none">friend-2.tld</a>
+        <a href="#" target="_blank" style="width:88px;height:31px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim);border-radius:1px;text-decoration:none">friend-3.tld</a>
       </div>
     </div>
-  </div>
+
+  </div><!-- end .wb -->
   <div class="rh" onmousedown="doResize(event,'w-about')"></div>
 </div>
 
-<!-- PHILES WINDOW -->
+
+<!-- ============================================================
+     PHILES WINDOW  (blog / writing list)
+     ============================================================ -->
 <div class="win hidden" id="w-philes" style="left:100px;top:60px;width:580px;height:360px">
   <div class="wtb" onmousedown="doDrag(event,'w-philes')">
     <div class="wtitle">thunar — ~/philes</div>
@@ -296,24 +395,23 @@ welcome to my small corner of the internet.<br><br>
     </div>
   </div>
   <div class="wb" style="padding:8px">
-    <div style="color:var(--dim);font-size:10px;margin-bottom:8px">drwxr-xr-x user user ~/philes/ 10 items</div>
+    <!-- TEMPLATE: update item count -->
+    <div style="color:var(--dim);font-size:10px;margin-bottom:8px">drwxr-xr-x your-handle your-handle ~/philes/ N items</div>
     <table class="ft">
-      <tr><td>doc</td><td><a href="#">the watchers pt2 — the correspondence</a></td><td>2025-01</td></tr>
-      <tr><td>doc</td><td><a href="#">openai, government, and identity surveillance</a></td><td>2025-01</td></tr>
-      <tr><td>doc</td><td><a href="#">forging passkeys — FIDO2 and WebAuthn attack surface</a></td><td>2025</td></tr>
-      <tr><td>doc</td><td><a href="#">exploiting representational discontinuities in LLMs</a></td><td>2025</td></tr>
-      <tr><td>doc</td><td><a href="#">cracking a 200 dollar protection in a day with xcopy</a></td><td>2024</td></tr>
-      <tr><td>doc</td><td><a href="#">top 20 worldwide — social engineering and undetected cheat</a></td><td>2024</td></tr>
-      <tr><td>doc</td><td><a href="#">reverse engineering arm64 hypervisor internals</a></td><td>2024</td></tr>
-      <tr><td>doc</td><td><a href="#">puppets</a></td><td>2024</td></tr>
-      <tr><td>doc</td><td><a href="#">server side template injection</a></td><td>2023</td></tr>
-      <tr><td>doc</td><td><a href="#">moonlight</a></td><td>2023</td></tr>
+      <!-- TEMPLATE: one <tr> per post — col 1: type, col 2: title + link, col 3: date -->
+      <tr><td>doc</td><td><a href="#">Post title one</a></td><td>2025-01</td></tr>
+      <tr><td>doc</td><td><a href="#">Post title two</a></td><td>2025-01</td></tr>
+      <tr><td>doc</td><td><a href="#">Post title three</a></td><td>2024</td></tr>
+      <!-- add more rows here -->
     </table>
   </div>
   <div class="rh" onmousedown="doResize(event,'w-philes')"></div>
 </div>
 
-<!-- LINKS WINDOW -->
+
+<!-- ============================================================
+     LINKS WINDOW
+     ============================================================ -->
 <div class="win hidden" id="w-links" style="left:680px;top:38px;width:200px;height:300px">
   <div class="wtb" onmousedown="doDrag(event,'w-links')">
     <div class="wtitle">links.txt</div>
@@ -324,15 +422,16 @@ welcome to my small corner of the internet.<br><br>
     </div>
   </div>
   <div class="wb">
+    <!-- TEMPLATE: link sections — rename headings, add/remove .lr divs -->
     <div class="sec2">philes</div>
-    <div class="lr"><a href="#">nullpt.rs</a></div>
-    <div class="lr"><a href="#">ud2.rip</a></div>
-    <div class="lr"><a href="#">tcp.direct</a></div>
+    <div class="lr"><a href="#">friend-site-1</a></div>
+    <div class="lr"><a href="#">friend-site-2</a></div>
+
     <div class="sec2">socials</div>
     <div class="lr"><a href="#">github</a></div>
-    <div class="lr"><a href="#">twitter</a></div>
-    <div class="lr"><a href="#">soundcloud</a></div>
-    <div class="lr"><a href="#">last.fm</a></div>
+    <div class="lr"><a href="#">twitter / x</a></div>
+    <div class="lr"><a href="#">social-3</a></div>
+
     <div class="sec2">other</div>
     <div class="lr"><a href="#" onclick="openWin('w-philes');return false">blog</a></div>
     <div class="lr"><a href="#">rss.xml</a></div>
@@ -341,7 +440,10 @@ welcome to my small corner of the internet.<br><br>
   <div class="rh" onmousedown="doResize(event,'w-links')"></div>
 </div>
 
-<!-- MUSIC WINDOW -->
+
+<!-- ============================================================
+     MUSIC WINDOW  (generative Web Audio player)
+     ============================================================ -->
 <div class="win hidden" id="w-music" style="left:200px;top:180px;width:360px;height:360px">
   <div class="wtb" onmousedown="doDrag(event,'w-music')">
     <div class="wtitle">moc — music on console</div>
@@ -378,16 +480,24 @@ welcome to my small corner of the internet.<br><br>
       <div class="pb" id="pshuf" onclick="toggleShuf()" style="margin-left:auto;opacity:.4">shuf</div>
     </div>
     <div style="margin-top:10px">
+      <!-- TEMPLATE: playlist section label -->
       <div style="font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;border-bottom:1px solid var(--border);padding-bottom:2px">
-        playlist — generative synth (web audio)
+        playlist — lo-fi gaming (youtube)
       </div>
       <div id="plist" style="font-size:11px;max-height:90px;overflow-y:auto"></div>
+    </div>
+    <!-- hidden YouTube player -->
+    <div id="yt-container" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden">
+      <div id="yt-player"></div>
     </div>
   </div>
   <div class="rh" onmousedown="doResize(event,'w-music')"></div>
 </div>
 
-<!-- CONTACT WINDOW -->
+
+<!-- ============================================================
+     CONTACT WINDOW
+     ============================================================ -->
 <div class="win hidden" id="w-contact" style="left:310px;top:110px;width:300px;height:250px">
   <div class="wtb" onmousedown="doDrag(event,'w-contact')">
     <div class="wtitle">contact</div>
@@ -399,24 +509,94 @@ welcome to my small corner of the internet.<br><br>
   </div>
   <div class="wb">
     <div class="term">
-<span class="tp2">user@crunchbang</span><span class="tpa">:~$ </span><span class="tcm">cat contact.txt</span><br><br>
-<div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">github:</span><a href="#">@yourhandle</a></div>
-<div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">twitter:</span><a href="#">@yourhandle</a></div>
-<div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">email:</span><span>user [at] void.sh</span></div>
-<div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">matrix:</span><span>@user:mozilla.org</span></div>
-<div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">irc:</span><span>user @ libera.chat</span></div><br>
-<span class="tp2">user@crunchbang</span><span class="tpa">:~$ </span><span class="cur"></span>
+      <span class="tp2">your-handle@hostname</span><span class="tpa">:~$ </span><span class="tcm">cat contact.txt</span><br><br>
+      <!-- TEMPLATE: contact rows — add/remove as needed -->
+      <div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">github:</span><a href="#">@your-handle</a></div>
+      <div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">twitter:</span><a href="#">@your-handle</a></div>
+      <div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">email:</span><span>you [at] domain.tld</span></div>
+      <div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">matrix:</span><span>@you:server.org</span></div>
+      <div style="display:flex;margin:2px 0;font-size:11px"><span style="color:var(--dim);width:70px;flex-shrink:0">irc:</span><span>your-nick @ libera.chat</span></div><br>
+      <span class="tp2">your-handle@hostname</span><span class="tpa">:~$ </span><span class="cur"></span>
     </div>
-    <div class="note" style="margin-top:8px">twitter or email for urgent. irc when there.</div>
+    <!-- TEMPLATE: contact footnote -->
+    <div class="note" style="margin-top:8px">preferred contact methods / availability note here.</div>
   </div>
   <div class="rh" onmousedown="doResize(event,'w-contact')"></div>
 </div>
 
-<!-- PANEL -->
-<div id="panel">
-  <div class="phash" onclick="showCtx({clientX:4,clientY:window.innerHeight-30,preventDefault:function(){}})">
-    #!
+
+<!-- ============================================================
+     START MENU
+     ============================================================ -->
+<div id="startmenu">
+  <div class="sm-header">
+    <div class="sm-avatar">👤</div>
+    <div>
+      <!-- TEMPLATE: your handle / hostname -->
+      <div class="sm-user">your-handle</div>
+      <div class="sm-host">your-handle@hostname</div>
+    </div>
   </div>
+  <div class="sm-body">
+    <div class="sm-left">
+      <div class="sm-section">applications</div>
+      <div class="sm-item" onclick="smOpen('w-about')">
+        <span class="sm-icon">🖥️</span> terminal <span class="sm-key">urxvt</span>
+      </div>
+      <div class="sm-item" onclick="smOpen('w-philes')">
+        <span class="sm-icon">📁</span> file manager <span class="sm-key">thunar</span>
+      </div>
+      <div class="sm-item" onclick="smOpen('w-music')">
+        <span class="sm-icon">🎵</span> music player <span class="sm-key">moc</span>
+      </div>
+      <div class="sm-sep"></div>
+      <div class="sm-section">windows</div>
+      <div class="sm-item" onclick="smOpen('w-about')">
+        <span class="sm-icon">◈</span> about
+      </div>
+      <div class="sm-item" onclick="smOpen('w-philes')">
+        <span class="sm-icon">◈</span> philes / blog
+      </div>
+      <div class="sm-item" onclick="smOpen('w-links')">
+        <span class="sm-icon">◈</span> links
+      </div>
+      <div class="sm-item" onclick="smOpen('w-contact')">
+        <span class="sm-icon">◈</span> contact
+      </div>
+    </div>
+    <div class="sm-right">
+      <div class="sm-section">places</div>
+      <div class="sm-item" onclick="smOpen('w-philes')" style="font-size:11px">
+        <span class="sm-icon">🏠</span> home
+      </div>
+      <div class="sm-item" onclick="smOpen('w-philes')" style="font-size:11px">
+        <span class="sm-icon">📄</span> philes
+      </div>
+      <div class="sm-item" onclick="smOpen('w-links')" style="font-size:11px">
+        <span class="sm-icon">🌐</span> links
+      </div>
+      <div class="sm-sep"></div>
+      <div class="sm-section">system</div>
+      <div class="sm-item" style="font-size:11px;opacity:.5;cursor:default">
+        <span class="sm-icon">⚙️</span> settings
+      </div>
+      <div class="sm-item" style="font-size:11px;opacity:.5;cursor:default">
+        <span class="sm-icon">📦</span> packages
+      </div>
+    </div>
+  </div>
+  <div class="sm-footer">
+    <div class="sm-fbtn reboot" onclick="closeStartMenu();location.reload()">reboot</div>
+    <div class="sm-fbtn" onclick="closeStartMenu();doShutdown()">shut down</div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PANEL  (taskbar)
+     ============================================================ -->
+<div id="panel">
+  <div class="phash" id="startbtn" onclick="toggleStartMenu()" title="start menu">#!</div>
   <div id="pwins"></div>
   <div class="pr">
     <div class="ws">
@@ -430,399 +610,443 @@ welcome to my small corner of the internet.<br><br>
   </div>
 </div>
 
+
 <script>
-// BOOT
-var bootSeq=[
-  '[    0.000000] Linux version 3.2.0-4-amd64',
-  '[    0.012000] ACPI: IRQ0 used by override.',
-  '[    0.445000] NET: Registered protocol family 2',
-  '[    0.891000] EXT4-fs (sda1): mounted filesystem',
-  ' * Starting system logger                          [ ok ]',
-  ' * Starting network interface eth0                 [ ok ]',
-  ' * Starting Openbox window manager                 [ ok ]',
-  ' * Starting tint2 panel                            [ ok ]',
-  ' * Starting conky system monitor                   [ ok ]',
-  ' * Loading user session                            [ ok ]',
+// ================================================================
+// START MENU
+// ================================================================
+var smEl = document.getElementById('startmenu');
+var smOpen_flag = false;
+function toggleStartMenu() {
+  smOpen_flag = !smOpen_flag;
+  smEl.classList.toggle('on', smOpen_flag);
+  document.getElementById('startbtn').style.color = smOpen_flag ? 'var(--white)' : '';
+}
+function closeStartMenu() {
+  smOpen_flag = false;
+  smEl.classList.remove('on');
+  document.getElementById('startbtn').style.color = '';
+}
+function smOpen(id) {
+  closeStartMenu();
+  openWin(id);
+}
+document.addEventListener('click', function(e) {
+  if (smOpen_flag && !e.target.closest('#startmenu') && !e.target.closest('#startbtn')) {
+    closeStartMenu();
+  }
+});
+
+// ================================================================
+// DESKTOP ICONS
+// ================================================================
+function selectIcon(el) {
+  document.querySelectorAll('.dicon').forEach(function(d){ d.classList.remove('selected'); });
+  el.classList.add('selected');
+  event.stopPropagation();
+}
+document.getElementById('desk').addEventListener('click', function(e){
+  if(e.target === this || e.target.id === 'desk'){
+    document.querySelectorAll('.dicon').forEach(function(d){ d.classList.remove('selected'); });
+  }
+});
+
+// ================================================================
+// BOOT SEQUENCE
+// TEMPLATE: edit lines to match your fake OS identity
+// ================================================================
+var bootSeq = [
+  '[ 0.000000] Linux version x.x.x-amd64',
+  '[ 0.012000] ACPI: IRQ0 used by override.',
+  '[ 0.445000] NET: Registered protocol family 2',
+  '[ 0.891000] EXT4-fs (sda1): mounted filesystem',
+  ' * Starting system logger                        [ ok ]',
+  ' * Starting network interface eth0               [ ok ]',
+  ' * Starting Openbox window manager               [ ok ]',
+  ' * Starting tint2 panel                          [ ok ]',
+  ' * Starting conky system monitor                 [ ok ]',
+  ' * Loading user session                          [ ok ]',
   '',
-  'CrunchBang GNU/Linux 11 Waldorf',
-  'crunchbang login: user (automatic)',
+  // TEMPLATE: OS name and login line
+  'YourOS GNU/Linux x.x',
+  'hostname login: your-handle (automatic)',
 ];
-var bi=0;
-function bstep(){
-  if(bi>=bootSeq.length){setTimeout(function(){document.getElementById('boot').classList.add('gone');initD();},500);return;}
-  var raw=bootSeq[bi++];
-  var d=document.createElement('div');d.className='bl';
-  if(raw.indexOf('[ ok ]')>-1){
-    d.innerHTML=raw.replace('[ ok ]','<span class="ok2">[ ok ]</span>');
-  } else if(bi>11){
-    d.innerHTML='<span class="inf">'+raw+'</span>';
-  } else {d.textContent=raw;}
+
+var bi = 0;
+function bstep() {
+  if (bi >= bootSeq.length) {
+    setTimeout(function () { document.getElementById('boot').classList.add('gone'); initD(); }, 500);
+    return;
+  }
+  var raw = bootSeq[bi++];
+  var d = document.createElement('div'); d.className = 'bl';
+  if (raw.indexOf('[ ok ]') > -1) {
+    d.innerHTML = raw.replace('[ ok ]', '<span class="ok2">[ ok ]</span>');
+  } else if (bi > 11) {
+    d.innerHTML = '<span class="inf">' + raw + '</span>';
+  } else { d.textContent = raw; }
   document.getElementById('blines').appendChild(d);
-  setTimeout(bstep,bi<4?55:bi<10?110:220);
+  setTimeout(bstep, bi < 4 ? 55 : bi < 10 ? 110 : 220);
 }
 bstep();
 
+// ================================================================
 // INIT
-function initD(){
-  tickClock();setInterval(tickClock,1000);
-  tickConky();setInterval(tickConky,3000);
-  document.getElementById('lu').textContent=new Date().toISOString().slice(0,10);
+// ================================================================
+function initD() {
+  tickClock(); setInterval(tickClock, 1000);
+  tickConky(); setInterval(tickConky, 3000);
+  document.getElementById('lu').textContent = new Date().toISOString().slice(0, 10);
   initEQ();
-  setTimeout(function(){openWin('w-about');notify('session','welcome back, user.');},300);
+  // TEMPLATE: change welcome notification text
+  setTimeout(function () { openWin('w-about'); notify('session', 'welcome back, your-handle.'); }, 300);
 }
 
+// ================================================================
 // CLOCK
-function tickClock(){
-  var n=new Date();
-  document.getElementById('pclk').textContent=pad(n.getHours())+':'+pad(n.getMinutes());
-  document.getElementById('pdate').textContent=n.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+// ================================================================
+function tickClock() {
+  var n = new Date();
+  document.getElementById('pclk').textContent = pad(n.getHours()) + ':' + pad(n.getMinutes());
+  document.getElementById('pdate').textContent = n.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
 }
-function pad(x){return String(x).padStart(2,'0');}
+function pad(x) { return String(x).padStart(2, '0'); }
 
-// CONKY
-function tickConky(){
-  var cpu=Math.floor(Math.random()*35+5);
-  var mem=Math.floor(Math.random()*900+500);
-  var tmp=Math.floor(Math.random()*12+40);
-  var dl=(Math.random()*180).toFixed(1);
-  var ul=(Math.random()*30).toFixed(1);
-  document.getElementById('cc').textContent=cpu+'%';
-  document.getElementById('ccb').style.width=cpu+'%';
-  document.getElementById('ctemp').textContent=tmp+'C';
-  document.getElementById('cm').textContent=mem+' / 4096 MiB';
-  document.getElementById('cmb').style.width=(mem/4096*100)+'%';
-  document.getElementById('cdl').textContent=dl+' KB/s';
-  document.getElementById('cul').textContent=ul+' KB/s';
-  document.getElementById('pnet').textContent='down '+dl+' up '+ul;
-  document.getElementById('nfram').textContent=mem+' MiB / 4096 MiB';
-  var s=Math.floor(performance.now()/1000),h=Math.floor(s/3600),m=Math.floor((s%3600)/60);
-  document.getElementById('cu').textContent='0d '+h+'h '+m+'m';
+// ================================================================
+// CONKY (simulated stats)
+// TEMPLATE: adjust RAM total and disk % to match your setup
+// ================================================================
+function tickConky() {
+  var cpu  = Math.floor(Math.random() * 35 + 5);
+  var mem  = Math.floor(Math.random() * 900 + 500);
+  var tmp  = Math.floor(Math.random() * 12 + 40);
+  var dl   = (Math.random() * 180).toFixed(1);
+  var ul   = (Math.random() * 30).toFixed(1);
+  var RAM_TOTAL = 4096; // TEMPLATE: change to your RAM in MiB
+  document.getElementById('cc').textContent   = cpu + '%';
+  document.getElementById('ccb').style.width  = cpu + '%';
+  document.getElementById('ctemp').textContent = tmp + 'C';
+  document.getElementById('cm').textContent   = mem + ' / ' + RAM_TOTAL + ' MiB';
+  document.getElementById('cmb').style.width  = (mem / RAM_TOTAL * 100) + '%';
+  document.getElementById('cdl').textContent  = dl + ' KB/s';
+  document.getElementById('cul').textContent  = ul + ' KB/s';
+  document.getElementById('pnet').textContent = 'down ' + dl + ' up ' + ul;
+  document.getElementById('nfram').textContent = mem + ' MiB / ' + RAM_TOTAL + ' MiB';
+  var s = Math.floor(performance.now() / 1000), h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+  document.getElementById('cu').textContent = '0d ' + h + 'h ' + m + 'm';
 }
 
+// ================================================================
 // NOTIFY
-function notify(title,msg){
-  document.getElementById('ntitle').textContent=title;
-  document.getElementById('nmsg').textContent=msg;
-  var n=document.getElementById('notif');
+// ================================================================
+function notify(title, msg) {
+  document.getElementById('ntitle').textContent = title;
+  document.getElementById('nmsg').textContent   = msg;
+  var n = document.getElementById('notif');
   n.classList.add('on');
-  setTimeout(function(){n.classList.remove('on');},3500);
+  setTimeout(function () { n.classList.remove('on'); }, 3500);
 }
 
-// CTX MENU
-var ctxEl=document.getElementById('ctx');
-function showCtx(e){
+// ================================================================
+// CONTEXT MENU
+// ================================================================
+var ctxEl = document.getElementById('ctx');
+function showCtx(e) {
   e.preventDefault();
-  ctxEl.style.left=Math.min(e.clientX,window.innerWidth-200)+'px';
-  ctxEl.style.top=Math.min(e.clientY,window.innerHeight-280)+'px';
+  ctxEl.style.left = Math.min(e.clientX, window.innerWidth - 200) + 'px';
+  ctxEl.style.top  = Math.min(e.clientY, window.innerHeight - 280) + 'px';
   ctxEl.classList.add('on');
 }
-function closeCtx(){ctxEl.classList.remove('on');}
-document.addEventListener('click',function(e){if(!e.target.closest('#ctx'))closeCtx();});
+function closeCtx() { ctxEl.classList.remove('on'); }
+document.addEventListener('click', function (e) { if (!e.target.closest('#ctx')) closeCtx(); });
 
+// ================================================================
 // WINDOW MANAGEMENT
-var wins={};var zT=10;var panelEl=document.getElementById('pwins');
-var wtitles={'w-about':'terminal','w-philes':'philes','w-links':'links','w-music':'moc','w-contact':'contact'};
+// ================================================================
+var wins = {}; var zT = 10; var panelEl = document.getElementById('pwins');
+// TEMPLATE: map window ids to taskbar labels
+var wtitles = { 'w-about': 'terminal', 'w-philes': 'philes', 'w-links': 'links', 'w-music': 'moc', 'w-contact': 'contact' };
 
-function openWin(id){
-  var w=document.getElementById(id);
-  w.classList.remove('hidden');
-  bringF(id);
-  if(!wins[id]){wins[id]={min:false};mkPBtn(id);}
-  else{wins[id].min=false;setPBA(id,true);}
-}
-function closeWin(id){
-  document.getElementById(id).classList.add('hidden');
-  var pb=document.getElementById('pb-'+id);
-  if(pb)pb.remove();
-  delete wins[id];
-}
-function minWin(id){
-  document.getElementById(id).classList.add('hidden');
-  if(wins[id]){wins[id].min=true;setPBA(id,false);}
-}
-function bringF(id){
-  zT++;
-  document.getElementById(id).style.zIndex=zT;
-  document.querySelectorAll('.win').forEach(function(w){w.classList.remove('active');});
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.pwb').forEach(function(b){b.classList.remove('on');});
-  var pb=document.getElementById('pb-'+id);
-  if(pb)pb.classList.add('on');
-}
-function mkPBtn(id){
-  var b=document.createElement('div');
-  b.className='pwb on';b.id='pb-'+id;
-  b.textContent=wtitles[id]||id;
-  b.onclick=function(){
-    if(wins[id]&&wins[id].min){document.getElementById(id).classList.remove('hidden');wins[id].min=false;bringF(id);}
-    else if(parseInt(document.getElementById(id).style.zIndex)===zT){minWin(id);}
-    else bringF(id);
-  };
-  panelEl.appendChild(b);
-}
-function setPBA(id,a){var pb=document.getElementById('pb-'+id);if(pb)pb.classList.toggle('on',a);}
+function openWin(id)  { var w = document.getElementById(id); w.classList.remove('hidden'); bringF(id); if (!wins[id]) { wins[id] = { min: false }; mkPBtn(id); } else { wins[id].min = false; setPBA(id, true); } }
+function closeWin(id) { document.getElementById(id).classList.add('hidden'); var pb = document.getElementById('pb-' + id); if (pb) pb.remove(); delete wins[id]; }
+function minWin(id)   { document.getElementById(id).classList.add('hidden'); if (wins[id]) { wins[id].min = true; setPBA(id, false); } }
+function bringF(id)   { zT++; document.getElementById(id).style.zIndex = zT; document.querySelectorAll('.win').forEach(function (w) { w.classList.remove('active'); }); document.getElementById(id).classList.add('active'); document.querySelectorAll('.pwb').forEach(function (b) { b.classList.remove('on'); }); var pb = document.getElementById('pb-' + id); if (pb) pb.classList.add('on'); }
+function mkPBtn(id)   { var b = document.createElement('div'); b.className = 'pwb on'; b.id = 'pb-' + id; b.textContent = wtitles[id] || id; b.onclick = function () { if (wins[id] && wins[id].min) { document.getElementById(id).classList.remove('hidden'); wins[id].min = false; bringF(id); } else if (parseInt(document.getElementById(id).style.zIndex) === zT) { minWin(id); } else bringF(id); }; panelEl.appendChild(b); }
+function setPBA(id, a){ var pb = document.getElementById('pb-' + id); if (pb) pb.classList.toggle('on', a); }
 
+// ================================================================
+// REOPEN WINDOWS — #! button cycles through closed windows and
+// reopens them one at a time; if all open, focuses the lowest z
+// ================================================================
+var ALL_WINS = ['w-about','w-philes','w-links','w-music','w-contact'];
+function reopenWindows() {
+  // find any window that is fully closed (not in wins registry at all)
+  var closed = ALL_WINS.filter(function(id){ return !wins[id]; });
+  if (closed.length) { openWin(closed[0]); return; }
+  // find any minimised window
+  var minimised = ALL_WINS.filter(function(id){ return wins[id] && wins[id].min; });
+  if (minimised.length) { openWin(minimised[0]); return; }
+  // all open — bring the furthest-back one to front
+  var sorted = ALL_WINS.slice().sort(function(a,b){
+    return (parseInt(document.getElementById(a).style.zIndex)||0) - (parseInt(document.getElementById(b).style.zIndex)||0);
+  });
+  bringF(sorted[0]);
+}
+
+// ================================================================
 // DRAG
-var drag=null,doff={};
-function doDrag(e,id){
-  if(e.target.classList.contains('wbtn'))return;
-  bringF(id);drag=id;
-  var w=document.getElementById(id);
-  doff={x:e.clientX-w.offsetLeft,y:e.clientY-w.offsetTop};
-  document.onmousemove=function(ev){
-    if(!drag)return;
-    var w2=document.getElementById(drag);
-    w2.style.left=Math.max(0,ev.clientX-doff.x)+'px';
-    w2.style.top=Math.max(0,Math.min(ev.clientY-doff.y,window.innerHeight-60))+'px';
-  };
-  document.onmouseup=function(){drag=null;document.onmousemove=null;document.onmouseup=null;};
+// ================================================================
+var drag = null, doff = {};
+function doDrag(e, id) {
+  if (e.target.classList.contains('wbtn')) return;
+  bringF(id); drag = id;
+  var w = document.getElementById(id);
+  doff = { x: e.clientX - w.offsetLeft, y: e.clientY - w.offsetTop };
+  document.onmousemove = function (ev) { if (!drag) return; var w2 = document.getElementById(drag); w2.style.left = Math.max(0, ev.clientX - doff.x) + 'px'; w2.style.top = Math.max(0, Math.min(ev.clientY - doff.y, window.innerHeight - 60)) + 'px'; };
+  document.onmouseup  = function () { drag = null; document.onmousemove = null; document.onmouseup = null; };
   e.preventDefault();
 }
 
+// ================================================================
 // RESIZE
-var resz=null,rs={};
-function doResize(e,id){
-  resz=id;var w=document.getElementById(id);
-  rs={x:e.clientX,y:e.clientY,w:w.offsetWidth,h:w.offsetHeight};
-  document.onmousemove=function(ev){
-    if(!resz)return;var w2=document.getElementById(resz);
-    w2.style.width=Math.max(200,rs.w+ev.clientX-rs.x)+'px';
-    w2.style.height=Math.max(130,rs.h+ev.clientY-rs.y)+'px';
-  };
-  document.onmouseup=function(){resz=null;document.onmousemove=null;document.onmouseup=null;};
-  e.preventDefault();e.stopPropagation();
+// ================================================================
+var resz = null, rs = {};
+function doResize(e, id) {
+  resz = id; var w = document.getElementById(id);
+  rs = { x: e.clientX, y: e.clientY, w: w.offsetWidth, h: w.offsetHeight };
+  document.onmousemove = function (ev) { if (!resz) return; var w2 = document.getElementById(resz); w2.style.width = Math.max(200, rs.w + ev.clientX - rs.x) + 'px'; w2.style.height = Math.max(130, rs.h + ev.clientY - rs.y) + 'px'; };
+  document.onmouseup  = function () { resz = null; document.onmousemove = null; document.onmouseup = null; };
+  e.preventDefault(); e.stopPropagation();
 }
 
+// ================================================================
 // TABS
-function stab(el,wid,name){
-  document.getElementById(wid).querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
-  document.getElementById(wid).querySelectorAll('.pane').forEach(function(p){p.classList.remove('on');});
+// ================================================================
+function stab(el, wid, name) {
+  document.getElementById(wid).querySelectorAll('.tab').forEach(function (t) { t.classList.remove('on'); });
+  document.getElementById(wid).querySelectorAll('.pane').forEach(function (p) { p.classList.remove('on'); });
   el.classList.add('on');
-  var pane=document.getElementById(wid+'-'+name);
-  if(pane)pane.classList.add('on');
+  var pane = document.getElementById(wid + '-' + name);
+  if (pane) pane.classList.add('on');
 }
 
+// ================================================================
 // SHUTDOWN
-function doShutdown(){
-  var b=document.getElementById('boot');b.classList.remove('gone');
-  b.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px;text-align:center">'+
-    '<div style="font-size:80px;font-weight:700;color:rgba(212,168,67,.2);letter-spacing:-6px;line-height:1">#!</div>'+
-    '<div style="font-size:13px;color:#666">system halted.</div>'+
-    '<div style="font-size:11px;color:#333">safe to power off.</div>'+
-    '<div style="margin-top:10px"><span onclick="location.reload()" style="color:#d4a843;cursor:pointer;border:1px solid #d4a843;padding:5px 18px;border-radius:2px;font-size:12px">reboot</span></div>'+
+// ================================================================
+function doShutdown() {
+  var b = document.getElementById('boot'); b.classList.remove('gone');
+  b.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px;text-align:center">' +
+    '<div style="font-size:80px;font-weight:700;color:rgba(212,168,67,.2);letter-spacing:-6px;line-height:1">#!</div>' +
+    '<div style="font-size:13px;color:#666">system halted.</div>' +
+    '<div style="font-size:11px;color:#333">safe to power off.</div>' +
+    '<div style="margin-top:10px"><span onclick="location.reload()" style="color:#d4a843;cursor:pointer;border:1px solid #d4a843;padding:5px 18px;border-radius:2px;font-size:12px">reboot</span></div>' +
     '</div>';
 }
 
-// MUSIC — Web Audio API generative synth
-var tracks=[
-  {title:'void.drift',      genre:'ambient drone',    key:0,  tempo:72, mood:'dark'},
-  {title:'kernel.panic',    genre:'glitch / lo-fi',   key:3,  tempo:88, mood:'glitch'},
-  {title:'tty0.sleep',      genre:'minimal ambient',  key:7,  tempo:60, mood:'soft'},
-  {title:'proc/mem.leak',   genre:'dark electronic',  key:-2, tempo:96, mood:'tense'},
-  {title:'eth0.dreams',     genre:'ambient / net',    key:5,  tempo:66, mood:'floaty'},
-  {title:'/dev/null',       genre:'noise texture',    key:1,  tempo:80, mood:'noise'},
-  {title:'cron.3am',        genre:'lo-fi beat',       key:-3, tempo:78, mood:'lofi'},
-  {title:'openbox.haunted', genre:'dark ambient',     key:8,  tempo:56, mood:'haunted'},
+// ================================================================
+// MUSIC — YouTube IFrame API lo-fi gaming player
+// ================================================================
+var tracks = [
+  { title: 'pokemon.r&b',         genre: 'lo-fi gaming',      ytid: 'ODe5tLNjrBY' },
+  { title: 'zelda.chill.beats',   genre: 'lo-fi / zelda',     ytid: 'lmkKUwp_8p4' },
+  { title: 'final.fantasy.lofi',  genre: 'lo-fi / ff',        ytid: 'Vyu_hgpDElE'  },
+  { title: 'studio.ghibli.beats', genre: 'lo-fi / ghibli',    ytid: 'ULJChQGTg-4'  },
+  { title: 'mario.chill',         genre: 'lo-fi / mario',     ytid: 'Of_hjLgCbyo'  },
+  { title: 'animal.crossing.lofi',genre: 'lo-fi / ac',        ytid: 'X6TRGdZ7CtA'  },
+  { title: 'stardew.valley.beats',genre: 'lo-fi / stardew',   ytid: 'oKDyIj34pxo'  },
+  { title: 'night.in.the.woods',  genre: 'lo-fi / indie',     ytid: 'z0NKC0vxFdk'  },
 ];
-var SCALES={
-  dark:[0,2,3,5,7,8,10],glitch:[0,1,3,5,6,8,10],soft:[0,2,4,7,9],
-  tense:[0,1,3,6,7,8,10],floaty:[0,2,4,5,7,9,11],noise:[0,2,3,5,6,8,9],
-  lofi:[0,3,5,7,10],haunted:[0,1,4,5,7,8,11]
-};
-var tI=0,playing=false,eqIv,shuffleOn=false,volVal=0.7;
-var AC=null,masterGain=null,activeNodes=[],stepInterval=null,progTimer=null;
-var trackSecs=0,trackMax=180;
 
-function getAC(){
-  if(!AC){
-    AC=new(window.AudioContext||window.webkitAudioContext)();
-    masterGain=AC.createGain();masterGain.gain.value=volVal;
-    masterGain.connect(AC.destination);
-  }
-  return AC;
-}
-function midi2hz(m){return 440*Math.pow(2,(m-69)/12);}
-function scaleNote(root,mood,deg){
-  var s=SCALES[mood]||SCALES.dark;
-  var oct=Math.floor(deg/s.length);
-  return 48+root+s[deg%s.length]+oct*12;
-}
-function playNote(midi,dur,gv,type,atk,rel){
-  var ac=getAC(),now=ac.currentTime;
-  atk=atk||0.05;rel=rel||0.3;type=type||'sine';
-  var osc=ac.createOscillator(),env=ac.createGain(),filt=ac.createBiquadFilter();
-  filt.type='lowpass';filt.frequency.value=1200+Math.random()*800;
-  osc.type=type;osc.frequency.value=midi2hz(midi);
-  osc.detune.value=(Math.random()-0.5)*10;
-  env.gain.setValueAtTime(0,now);
-  env.gain.linearRampToValueAtTime(gv,now+atk);
-  env.gain.setValueAtTime(gv,now+dur-rel);
-  env.gain.linearRampToValueAtTime(0,now+dur);
-  osc.connect(filt);filt.connect(env);env.connect(masterGain);
-  osc.start(now);osc.stop(now+dur);
-  activeNodes.push(osc);
-}
-function makeNoise(gv,dur){
-  var ac=getAC();
-  var buf=ac.createBuffer(1,ac.sampleRate*dur,ac.sampleRate);
-  var d=buf.getChannelData(0);
-  for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
-  var src=ac.createBufferSource(),g=ac.createGain(),f=ac.createBiquadFilter();
-  f.type='bandpass';f.frequency.value=200+Math.random()*600;f.Q.value=8;
-  src.buffer=buf;src.connect(f);f.connect(g);g.gain.value=gv;g.connect(masterGain);
-  src.start();activeNodes.push(src);
-}
-function synthStep(t){
-  var mood=t.mood,root=t.key,beat=60/t.tempo;
-  if(mood==='dark'||mood==='haunted'){
-    [0,2,4].forEach(function(d){
-      playNote(scaleNote(root,mood,d),beat*8,0.07,'sine',0.4,1.2);
-      playNote(scaleNote(root,mood,d)-12,beat*8,0.05,'triangle',0.5,1.5);
-    });
-    if(Math.random()>0.4){
-      var mel=scaleNote(root,mood,Math.floor(Math.random()*5)+4);
-      setTimeout(function(){playNote(mel,beat*(1+Math.random()*2),0.05,'sine',0.02,0.4);},beat*Math.random()*6*1000);
+var tI = 0, playing = false, eqIv, shuffleOn = false, volVal = 70;
+var ytPlayer = null, ytReady = false;
+var trackSecs = 0, trackMax = 300, progTimer = null;
+
+// Load YouTube IFrame API
+(function(){
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+})();
+
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('yt-player', {
+    height: '1', width: '1',
+    videoId: tracks[0].ytid,
+    playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1 },
+    events: {
+      onReady: function(e) {
+        ytReady = true;
+        e.target.setVolume(volVal);
+      },
+      onStateChange: function(e) {
+        // YT.PlayerState.ENDED = 0
+        if (e.data === 0) nextT();
+        // YT.PlayerState.PLAYING = 1
+        if (e.data === 1) {
+          var dur = ytPlayer.getDuration();
+          if (dur > 0) trackMax = Math.floor(dur);
+        }
+      }
     }
-  } else if(mood==='glitch'){
-    [0,1,2,3,2,1,0,2].map(function(d,i){
-      setTimeout(function(){
-        playNote(scaleNote(root,mood,d),beat*0.4,0.1,'square',0.005,0.08);
-        if(Math.random()>0.6)makeNoise(0.04,0.05);
-      },i*beat*0.5*1000);
-    });
-  } else if(mood==='soft'||mood==='floaty'){
-    [0,1,2,3,2,1].forEach(function(d,i){
-      setTimeout(function(){playNote(scaleNote(root,mood,d)+12,beat*1.5,0.07,'sine',0.05,0.6);},i*beat*0.8*1000);
-    });
-    playNote(scaleNote(root,mood,0)-12,beat*4,0.06,'triangle',0.1,0.8);
-  } else if(mood==='tense'){
-    var pulse=scaleNote(root,mood,0);
-    [0,beat,beat*2,beat*3].forEach(function(t2){
-      setTimeout(function(){
-        playNote(pulse,beat*0.3,0.12,'sawtooth',0.005,0.1);
-        playNote(pulse+6,beat*0.3,0.04,'sine',0.005,0.1);
-      },t2*1000);
-    });
-    if(Math.random()>0.5)playNote(scaleNote(root,mood,3)+12,beat*2,0.05,'sine',0.1,0.5);
-  } else if(mood==='noise'){
-    makeNoise(0.03,beat*4);
-    playNote(scaleNote(root,mood,0),beat*8,0.06,'sawtooth',0.5,2);
-    playNote(scaleNote(root,mood,0)+7,beat*8,0.04,'sine',0.5,2);
-  } else if(mood==='lofi'){
-    var kick=scaleNote(root,mood,0)-12;
-    [0,beat*2].forEach(function(t2){setTimeout(function(){playNote(kick,0.15,0.18,'sine',0.002,0.1);},t2*1000);});
-    [0,beat,beat*2,beat*3].forEach(function(t2){setTimeout(function(){makeNoise(0.025,0.06);},t2*1000);});
-    [0,2,4].forEach(function(d){playNote(scaleNote(root,mood,d)+12,beat*4,0.05,'triangle',0.05,0.5);});
+  });
+}
+
+function fmtT(s){ return Math.floor(s/60)+':'+pad(Math.floor(s%60)); }
+
+function startProg(){
+  trackSecs = 0;
+  trackMax = 300;
+  clearInterval(progTimer);
+  progTimer = setInterval(function(){
+    if (!playing) return;
+    if (ytPlayer && ytReady && ytPlayer.getCurrentTime) {
+      trackSecs = Math.floor(ytPlayer.getCurrentTime());
+      var dur = ytPlayer.getDuration();
+      if (dur > 0) trackMax = Math.floor(dur);
+    } else {
+      trackSecs++;
+    }
+    updateProg();
+  }, 1000);
+}
+
+function stopProg(){ clearInterval(progTimer); progTimer = null; }
+
+function updateProg(){
+  var pct = trackMax > 0 ? (trackSecs / trackMax * 100) : 0;
+  document.getElementById('pprog').style.width = Math.min(pct,100) + '%';
+  document.getElementById('ptime').textContent = fmtT(trackSecs);
+  document.getElementById('pdur').textContent = fmtT(trackMax);
+}
+
+function loadT(){
+  var t = tracks[tI];
+  document.getElementById('ptr').textContent = t.title;
+  document.getElementById('pgenre').textContent = t.genre;
+  document.getElementById('ctrack').textContent = t.title;
+  document.getElementById('pprog').style.width = '0%';
+  document.getElementById('ptime').textContent = '0:00';
+  document.getElementById('pdur').textContent = '0:00';
+  hlPL();
+  if (ytPlayer && ytReady) {
+    ytPlayer.loadVideoById(t.ytid);
+    if (!playing) ytPlayer.pauseVideo();
   }
 }
-function startSynth(){
-  var t=tracks[tI];
-  var beat=60/t.tempo;
-  synthStep(t);
-  stepInterval=setInterval(function(){if(playing)synthStep(tracks[tI]);},beat*8*1000);
+
+function togglePlay(){
+  if (!ytReady) { notify('moc', 'player loading... try again'); return; }
+  playing = !playing;
+  if (playing) {
+    if (ytPlayer.getPlayerState() === -1 || ytPlayer.getPlayerState() === 5) {
+      ytPlayer.loadVideoById(tracks[tI].ytid);
+    } else {
+      ytPlayer.playVideo();
+    }
+    startProg(); animEQ(true);
+    document.getElementById('pst').textContent = '[ playing ]';
+    document.getElementById('ppbtn').textContent = 'pause';
+    document.getElementById('ppbtn').classList.add('pp');
+    document.getElementById('ctrack').textContent = tracks[tI].title;
+    loadT();
+  } else {
+    ytPlayer.pauseVideo();
+    stopProg(); animEQ(false);
+    document.getElementById('pst').textContent = '[ paused ]';
+    document.getElementById('ppbtn').textContent = 'play';
+    document.getElementById('ppbtn').classList.remove('pp');
+    document.getElementById('ctrack').textContent = '— paused';
+  }
 }
-function stopSynth(){
-  clearInterval(stepInterval);stepInterval=null;
-  activeNodes.forEach(function(n){try{n.stop();}catch(e){}});
-  activeNodes=[];
+
+function seek(e){
+  if (!ytReady || !trackMax) return;
+  var bar = document.getElementById('pbar');
+  var pct = (e.clientX - bar.getBoundingClientRect().left) / bar.offsetWidth;
+  var t = Math.floor(pct * trackMax);
+  ytPlayer.seekTo(t, true);
+  trackSecs = t;
+  updateProg();
 }
-function fmtT(s){return Math.floor(s/60)+':'+pad(Math.floor(s%60));}
-function updateProg(){
-  document.getElementById('pprog').style.width=(trackSecs/trackMax*100)+'%';
-  document.getElementById('ptime').textContent=fmtT(trackSecs);
-  document.getElementById('pdur').textContent=fmtT(trackMax);
+
+function setvol(e){
+  var bar = document.getElementById('vbar');
+  volVal = Math.round(Math.max(0, Math.min(100, (e.clientX - bar.getBoundingClientRect().left) / bar.offsetWidth * 100)));
+  if (ytPlayer && ytReady) ytPlayer.setVolume(volVal);
+  document.getElementById('vfill').style.width = volVal + '%';
+  document.getElementById('vval').textContent = volVal + '%';
 }
-function startProg(){
-  trackMax=120+Math.floor(Math.random()*120);trackSecs=0;updateProg();
-  progTimer=setInterval(function(){trackSecs++;updateProg();if(trackSecs>=trackMax)nextT();},1000);
+
+function nextT(){
+  var wp = playing;
+  if (playing && ytPlayer && ytReady) ytPlayer.stopVideo();
+  stopProg();
+  tI = shuffleOn ? Math.floor(Math.random() * tracks.length) : (tI + 1) % tracks.length;
+  loadT();
+  if (wp) { ytPlayer.playVideo(); startProg(); animEQ(true); }
 }
-function stopProg(){clearInterval(progTimer);progTimer=null;}
+
+function prevT(){
+  if (trackSecs > 3 && ytPlayer && ytReady) { ytPlayer.seekTo(0, true); trackSecs = 0; updateProg(); return; }
+  var wp = playing;
+  if (playing && ytPlayer && ytReady) ytPlayer.stopVideo();
+  stopProg();
+  tI = (tI - 1 + tracks.length) % tracks.length;
+  loadT();
+  if (wp) { ytPlayer.playVideo(); startProg(); animEQ(true); }
+}
+
+function toggleShuf(){
+  shuffleOn = !shuffleOn;
+  document.getElementById('pshuf').style.opacity = shuffleOn ? '1' : '.4';
+  document.getElementById('pshuf').style.color = shuffleOn ? 'var(--gold)' : '';
+}
+
+function animEQ(on){
+  var bars = document.querySelectorAll('.eqb');
+  if (on) {
+    eqIv = setInterval(function(){ bars.forEach(function(b){ b.style.height = (Math.random()*22+2)+'px'; }); }, 110);
+  } else {
+    clearInterval(eqIv);
+    bars.forEach(function(b){ b.style.height = '3px'; });
+  }
+}
 
 function initEQ(){
-  var w=document.getElementById('eqw');
-  for(var i=0;i<18;i++){var b=document.createElement('div');b.className='eqb';b.style.height='3px';w.appendChild(b);}
+  var w = document.getElementById('eqw');
+  for (var i = 0; i < 18; i++){
+    var b = document.createElement('div'); b.className = 'eqb'; b.style.height = '3px'; w.appendChild(b);
+  }
   buildPL();
 }
+
 function buildPL(){
-  var pl=document.getElementById('plist');pl.innerHTML='';
-  tracks.forEach(function(t,i){
-    var row=document.createElement('div');
-    row.style.cssText='padding:3px 4px;cursor:pointer;border-radius:2px;display:flex;gap:6px;align-items:center';
-    row.id='pl-'+i;
-    row.innerHTML='<span style="color:var(--dim);width:14px;text-align:right;flex-shrink:0">'+(i+1)+'</span>'+
-      '<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+t.title+'</span>'+
+  var pl = document.getElementById('plist'); pl.innerHTML = '';
+  tracks.forEach(function(t, i){
+    var row = document.createElement('div');
+    row.style.cssText = 'padding:3px 4px;cursor:pointer;border-radius:2px;display:flex;gap:6px;align-items:center';
+    row.id = 'pl-' + i;
+    row.innerHTML = '<span style="color:var(--dim);width:14px;text-align:right;flex-shrink:0">'+(i+1)+'</span>' +
+      '<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+t.title+'</span>' +
       '<span style="color:var(--dim);font-size:10px;flex-shrink:0">'+t.genre+'</span>';
-    row.onclick=function(){tI=i;if(playing){stopSynth();stopProg();loadT();startSynth();startProg();}else loadT();};
+    row.onclick = function(){
+      tI = i;
+      if (playing && ytPlayer && ytReady) {
+        ytPlayer.loadVideoById(tracks[tI].ytid);
+        startProg();
+      }
+      loadT();
+    };
     pl.appendChild(row);
   });
   hlPL();
 }
+
 function hlPL(){
-  document.querySelectorAll('#plist > div').forEach(function(r,i){
-    r.style.background=i===tI?'var(--border)':'';
-    r.style.color=i===tI?'var(--gold)':'';
+  document.querySelectorAll('#plist > div').forEach(function(r, i){
+    r.style.background = i === tI ? 'var(--border)' : '';
+    r.style.color = i === tI ? 'var(--gold)' : '';
   });
-}
-function loadT(){
-  var t=tracks[tI];
-  document.getElementById('ptr').textContent=t.title;
-  document.getElementById('pgenre').textContent=t.genre;
-  document.getElementById('ctrack').textContent=t.title;
-  document.getElementById('pprog').style.width='0%';
-  document.getElementById('ptime').textContent='0:00';
-  hlPL();
-}
-function togglePlay(){
-  getAC();
-  if(AC.state==='suspended')AC.resume();
-  playing=!playing;
-  if(playing){
-    loadT();startSynth();startProg();animEQ(true);
-    document.getElementById('pst').textContent='[ playing ]';
-    document.getElementById('ppbtn').textContent='pause';
-    document.getElementById('ppbtn').classList.add('pp');
-    document.getElementById('ctrack').textContent=tracks[tI].title;
-  } else {
-    stopSynth();stopProg();animEQ(false);
-    document.getElementById('pst').textContent='[ paused ]';
-    document.getElementById('ppbtn').textContent='play';
-    document.getElementById('ctrack').textContent='— paused';
-  }
-}
-function animEQ(on){
-  var bars=document.querySelectorAll('.eqb');
-  if(on){eqIv=setInterval(function(){bars.forEach(function(b){b.style.height=(Math.random()*22+2)+'px';});},110);}
-  else{clearInterval(eqIv);bars.forEach(function(b){b.style.height='3px';});}
-}
-function seek(e){
-  if(!trackMax)return;
-  var bar=document.getElementById('pbar');
-  var pct=(e.clientX-bar.getBoundingClientRect().left)/bar.offsetWidth;
-  trackSecs=Math.floor(pct*trackMax);updateProg();
-}
-function setvol(e){
-  var bar=document.getElementById('vbar');
-  volVal=Math.max(0,Math.min(1,(e.clientX-bar.getBoundingClientRect().left)/bar.offsetWidth));
-  if(masterGain)masterGain.gain.value=volVal;
-  document.getElementById('vfill').style.width=(volVal*100)+'%';
-  document.getElementById('vval').textContent=Math.round(volVal*100)+'%';
-}
-function nextT(){
-  var wp=playing;
-  if(playing){stopSynth();stopProg();}
-  tI=shuffleOn?Math.floor(Math.random()*tracks.length):(tI+1)%tracks.length;
-  loadT();if(wp){startSynth();startProg();}
-}
-function prevT(){
-  if(trackSecs>3){trackSecs=0;updateProg();return;}
-  var wp=playing;if(playing){stopSynth();stopProg();}
-  tI=(tI-1+tracks.length)%tracks.length;loadT();if(wp){startSynth();startProg();}
-}
-function toggleShuf(){
-  shuffleOn=!shuffleOn;
-  document.getElementById('pshuf').style.opacity=shuffleOn?'1':'.4';
-  document.getElementById('pshuf').style.color=shuffleOn?'var(--gold)':'';
-}
-</script>
+}</script>
 </body>
 </html>
